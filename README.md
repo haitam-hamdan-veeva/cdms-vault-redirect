@@ -1,4 +1,5 @@
 # CDMS Vault Redirect
+Tampermonkey script that acts as a quick shortcut to access CDMS redirect Vaults.
 ## Demo
 ![demo](https://github.com/haitam-hamdan-veeva/cdms-vault-redirect/blob/main/images/demo.gif)
 ## How to install
