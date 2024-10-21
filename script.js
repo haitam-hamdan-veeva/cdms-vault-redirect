@@ -15,25 +15,27 @@
   const SWITCH_VAULT_PATH = 'veevaHome/switchVault/';
   const VMC_REDIRECT_URL = 'https://vmc.veevavault.com/vmc/vault/find/';
 
-  const interceptXHRRequests = () => {
+  function interceptXHRRequests() {
     const originalOpen = XMLHttpRequest.prototype.open;
-
     XMLHttpRequest.prototype.open = function (method, url) {
       const requestURL = new URL(url, window.location.origin).href;
 
       if (requestURL.includes(SWITCH_VAULT_PATH)) {
-        const redirectVaultId = requestURL.split('/').pop();
+        const cdmsRedirectDialog = document.querySelector('.vv-cdm-dialog.cdm-redirectdialog');
+        if (cdmsRedirectDialog) {
+          const redirectVaultId = requestURL.split('/').pop();
 
-        alert(
-          `[CDMS Vault Redirect]: Opening target Vault ${redirectVaultId}. Click OK to continue.`
-        );
+          alert(`[CDMS Vault Redirect]: Opening target Vault ${redirectVaultId}. Click OK to continue.`);
 
-        window.location.replace(`${VMC_REDIRECT_URL}${redirectVaultId}`);
+          window.location.replace(`${VMC_REDIRECT_URL}${redirectVaultId}`);
+        } else {
+          console.log('[CDMS Vault Redirect]: No CDMS redirect dialog found. Redirect skipped.');
+        }
       }
 
       return originalOpen.apply(this, arguments);
     };
-  };
+  }
 
   interceptXHRRequests();
 })();
