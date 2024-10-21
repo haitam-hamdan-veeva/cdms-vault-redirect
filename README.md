@@ -13,4 +13,4 @@ Tampermonkey script that acts as a quick shortcut to access CDMS redirect Vaults
 ![enable script](https://github.com/haitam-hamdan-veeva/cdms-vault-redirect/blob/main/images/enable_script.png)
 6. Navigate to your Zendesk ticket and refresh the page
 ## TODO
-- [ ] Fix a bug where the redirect works on the Support Vaults's switch menu
+- [x] Fix a bug where the redirect works on the Support Vaults's switch menu
